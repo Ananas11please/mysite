@@ -1,0 +1,84 @@
+<!DOCTYPE html> <!-- Определяет тип документа и версию HTML (HTML5) -->
+<html lang="ru"> <!-- Начало HTML-документа, задает язык страницы как русский -->
+<head>
+    <meta charset="UTF-8"> <!-- Устанавливает кодировку документа в UTF-8 для поддержки всех символов -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Устанавливает мета-тег для адаптивного дизайна на мобильных устройствах -->
+    <title>Positivus Landing Page Design (Community)</title> <!-- Устанавливает заголовок страницы, который отображается на вкладке браузера -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> <!-- Подключает файл стилей (CSS) для оформления страницы -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Предварительное соединение с Google Fonts для ускорения загрузки -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- Предварительное соединение с Google Fonts (с использованием кросс-доменных запросов) -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet"> <!-- Подключает шрифт Space Grotesk с разными весами -->
+</head>
+<body> <!-- Начало тела документа -->
+    <header> <!-- Начало заголовка страницы -->
+        <div class="nav_bar"> <!-- Контейнер для навигационной панели -->
+            <div class="logo"> <!-- Контейнер для логотипа -->
+                <a href="{{ url_for('index') }}">
+                    <img src="{{ url_for('static', filename='images/logo.svg') }}"> <!-- Вставляет изображение логотипа -->
+                </a>
+            </div>
+            <div class="menu"> <!-- Контейнер для меню навигации -->
+                <ul class="menu-item"> <!-- Ненумерованный список для пунктов меню -->
+                    <li><a href="#">About us</a></li> <!-- Пункт меню "О нас" -->
+                    <li><a href="#">Services</a></li> <!-- Пункт меню "Услуги" -->
+                    <li><a href="#">Use Cases</a></li> <!-- Пункт меню "Случаи использования" -->
+                    <li><a href="#">Pricing</a></li> <!-- Пункт меню "Цены" -->
+                    <li><a href="{{ url_for('blog') }}">Blog</a></li> <!-- Пункт меню "Блог" -->
+                </ul>
+                <button type="button" class="button">Request a quote</button> <!-- Кнопка "Запросить квоту" -->
+            </div>
+        </div>
+    </header>
+    <main> <!-- Начало основного содержимого страницы -->
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <div class="footer_nav_bar">
+            <div class="footer_nav_bar_menu">
+                <div>
+                    <img src="{{ url_for('static', filename='images/logo2.svg') }}" class="logo2">
+                </div>
+                <div>
+                    <ul class="menu" id="menu-footer"> <!-- Ненумерованный список для пунктов меню -->
+                        <li><a href="#">About us</a></li> <!-- Пункт меню "О нас" -->
+                        <li><a href="#">Services</a></li> <!-- Пункт меню "Услуги" -->
+                        <li><a href="#">Use Cases</a></li> <!-- Пункт меню "Случаи использования" -->
+                        <li><a href="#">Pricing</a></li> <!-- Пункт меню "Цены" -->
+                        <li><a href="#">Blog</a></li> <!-- Пункт меню "Блог" -->
+                    </ul>
+                </div>
+                <div>
+                    <img src="{{ url_for('static', filename='images/s1.svg') }}" class="logo-s">
+                    <img src="{{ url_for('static', filename='images/s2.svg') }}" class="logo-s">
+                    <img src="{{ url_for('static', filename='images/s3.svg') }}" class="logo=s">
+                </div>
+            </div>
+            <div class="footer_nav_bar_info">
+                <div class="footer_nav_bar_info_left">
+                    <div class="contact-us">
+                        <h4>Contact us:</h4>
+                    </div>
+                    <div class="info">
+                        <p>Email: info@positivus.com</p>
+                        <p>Phone: 555-567-8901</p>
+                        <p id="last-str">Address: 1234 Main St <br>
+                            Moonstone City, Stardust State 12345</p>
+                    </div>
+                </div>
+                <div class="subscription">
+                    <form action="{{ url_for('submit_form') }}" method="POST" class = "form">
+                        <input type="email" id="textInput" name="textInput" placeholder="Email" required>
+                        <input type="submit" value="Subscribe to news">
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2023 Positivus. All Rights Reserved.</p>
+                    <div class="privat-policy">
+                        <a href="#">Privacy Policy</a>
+                    </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
